@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Interaction Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        #dynamicText {
+            color: #0077cc;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 5px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>JavaScript DOM Manipulation</h1>
+    </header>
+
+    <main>
+        <section>
+            <p id="dynamicText">Click the button to change this text and style.</p>
+            <button onclick="changeText()">Change Text & Style</button>
+        </section>
+
+        <section style="margin-top: 20px;">
+            <button onclick="addItem()">Add Item</button>
+            <button onclick="removeItem()">Remove Item</button>
+            <ul id="itemList">
+                <li>Item 1</li>
+                <li>Item 2</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer style="margin-top: 40px;">
+        <p>&copy; 2025 DOM Tutorial. All rights reserved.</p>
+    </footer>
+
+    <!-- Link JavaScript File -->
+    <script src="script.js"></script>
+</body>
+</html>
+script.js — DOM Interaction Logic
+javascript
+Copy
+Edit
+function changeText() {
+    const text = document.getElementById('dynamicText');
+    text.textContent = 'Text has been changed! ';
+    text.classList.toggle('highlight');
+}
+
+function addItem() {
+    const ul = document.getElementById('itemList');
+    const newItem = document.createElement('li');
+    newItem.textContent = `Item ${ul.children.length + 1}`;
+    ul.appendChild(newItem);
+}
+
+function removeItem() {
+    const ul = document.getElementById('itemList');
+    if (ul.children.length > 0) {
+        ul.removeChild(ul.lastElementChild);
+    }
+}
